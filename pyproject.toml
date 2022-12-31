@@ -12,6 +12,7 @@ pandas = "^1.5.2"
 scikit-learn = "^1.2.0"
 sqlalchemy = "^1.4.45"
 python-dotenv = "^0.21.0"
+psycopg2-binary = "^2.9.5"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "0.0.203"
