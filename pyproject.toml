@@ -4,10 +4,14 @@ version = "0.1.0"
 description = "mlops for machine learning engineer"
 authors = ["Minki Kim <mingi3314@gmail.com>"]
 readme = "README.md"
-packages = [{include = "mlops_for_mle"}]
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pandas = "^1.5.2"
+scikit-learn = "^1.2.0"
+sqlalchemy = "^1.4.45"
+python-dotenv = "^0.21.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "0.0.203"
@@ -33,6 +37,7 @@ profile = "black"
 
 [tool.black]
 line-length = 100
+experimental-string-processing = true
 
 [tool.mypy]
 python_version = "3.10" 
