@@ -1,7 +1,4 @@
-import sqlalchemy as sa
 from sqlalchemy.engine.base import Engine
-
-from src.config import DB_URL
 
 
 def create_table(engine: Engine) -> None:
@@ -15,6 +12,7 @@ def create_table(engine: Engine) -> None:
 
 
 if __name__ == "__main__":
+    from src.database.engine import engine
+
     # Create a database engine
-    engine = sa.create_engine(DB_URL, echo=True)
     create_table(engine)
