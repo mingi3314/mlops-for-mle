@@ -13,6 +13,8 @@ scikit-learn = "^1.2.0"
 sqlalchemy = "^1.4.45"
 python-dotenv = "^0.21.0"
 psycopg2-binary = "^2.9.5"
+polars = "^0.15.9"
+pyarrow = "^10.0.1"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "0.0.203"
