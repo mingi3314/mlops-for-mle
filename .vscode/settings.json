@@ -1,0 +1,19 @@
+{
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "off",
+    "python.formatting.provider": "none",
+    "python.linting.mypyEnabled": true,
+    "python.linting.enabled": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+    },
+    "isort.args": [
+        "--profile",
+        "black",
+        "--line-length",
+        "100"
+    ],
+}
