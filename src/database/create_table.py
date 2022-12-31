@@ -1,7 +1,5 @@
 from sqlalchemy.engine.base import Engine
 
-from src.database.engine import engine
-
 
 def create_table(engine: Engine) -> None:
     # Create a connection to the database
@@ -14,5 +12,7 @@ def create_table(engine: Engine) -> None:
 
 
 if __name__ == "__main__":
+    from src.database.engine import engine
+
     # Create a database engine
     create_table(engine)
