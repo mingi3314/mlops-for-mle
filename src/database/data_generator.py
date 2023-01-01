@@ -7,8 +7,8 @@ from src.database.engine import create_engine
 from src.database.insert_data import fetch_data, insert_data
 
 
-@click.option("--db-host", default="localhost", help="Database host")
 @click.command()
+@click.option("--db-host", type=click.STRING, default="localhost", help="Database host")
 def main(db_host: str) -> None:
     engine = create_engine(db_host)
     create_table(engine)
