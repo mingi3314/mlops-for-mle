@@ -5,6 +5,5 @@ from src.config import DB_URL
 
 
 def create_engine(host: str = None) -> Engine:
-    if host:
-        DB_URL.replace("localhost", host)
-    return sa.create_engine(DB_URL, echo=True)
+    db_url = DB_URL.replace("localhost", host) if host else DB_URL
+    return sa.create_engine(db_url, echo=True)
