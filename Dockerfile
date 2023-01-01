@@ -31,4 +31,5 @@ ENV DB_URL="postgresql://myuser:mypassword@postgres-server:5432/mydatabase"
 COPY --from=package_installer /usr/local/bin /usr/local/bin
 COPY --from=package_installer /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY . .
-CMD ["python", "./src/database/data_generator.py"]
+ENTRYPOINT ["python", "./src/database/data_generator.py", "--db-host"]
+CMD ["localhost"]

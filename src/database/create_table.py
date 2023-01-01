@@ -12,7 +12,7 @@ def create_table(engine: Engine) -> None:
 
 
 if __name__ == "__main__":
-    from src.database.engine import engine
+    from src.database.engine import create_engine
 
     # Create a database engine
-    create_table(engine)
+    create_table(create_engine())

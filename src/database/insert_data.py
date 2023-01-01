@@ -24,8 +24,8 @@ def insert_data(engine: Engine, data: dict[str, Any]) -> None:
 
 
 if __name__ == "__main__":
-    from src.database.engine import engine
+    from src.database.engine import create_engine
 
     df_iris = fetch_data()
 
-    insert_data(engine, df_iris.to_dicts()[0])
+    insert_data(create_engine(), df_iris.to_dicts()[0])
