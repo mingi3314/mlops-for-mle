@@ -27,7 +27,6 @@ COPY ./poetry.lock ./pyproject.toml ./
 RUN poetry install --no-root --without dev 
 
 FROM base as data_generator
-ENV DB_URL="postgresql://myuser:mypassword@postgres-server:5432/mydatabase" 
 COPY --from=package_installer /usr/local/bin /usr/local/bin
 COPY --from=package_installer /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY . .
