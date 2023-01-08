@@ -24,13 +24,6 @@ def preprocess(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series,
     return X_train, X_test, y_train, y_test
 
 
-def scale_data(X_train: pd.DataFrame, X_test: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    scaler = StandardScaler()
-    scaled_X_train = scaler.fit_transform(X_train)
-    scaled_X_test = scaler.transform(X_test)
-    return scaled_X_train, scaled_X_test
-
-
 def train(scaled_X_train: pd.DataFrame, y_train: pd.Series) -> SVC:
     model = SVC()
     model.fit(scaled_X_train, y_train)
