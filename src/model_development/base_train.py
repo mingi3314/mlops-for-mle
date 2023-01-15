@@ -2,15 +2,17 @@ import os
 
 import joblib
 import pandas as pd
-from sklearn.datasets import load_iris
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
+from src.database.engine import create_engine
+
 
 def load_data() -> pd.DataFrame:
-    df = load_iris(as_frame=True).frame
+    enigne = create_engine()
+    df = pd.read_sql("SELECT * from iris_data ORDER BY id DESC LIMIT 100;", enigne)
     return df
 
 
