@@ -32,3 +32,14 @@ COPY --from=package_installer /usr/local/lib/python3.10/site-packages /usr/local
 COPY . .
 ENTRYPOINT ["python", "./src/database/data_generator.py", "--db-host"]
 CMD ["localhost"]
+
+FROM base as mlflow_server
+RUN apt-get update && apt-get install -y \
+    wget
+RUN wget https://dl.min.io/client/mc/release/linux-amd64/mc && \
+    chmod +x mc && \
+    mv mc /usr/bin/mc
+ENV PATH="$PATH:$HOME/minio-binaries/"
+COPY --from=package_installer /usr/local/bin /usr/local/bin
+COPY --from=package_installer /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY . .
