@@ -23,7 +23,6 @@ boto3 = "^1.26.50"
 [tool.poetry.group.dev.dependencies]
 ruff = "0.0.203"
 black = "22.12.0"
-isort = "5.11.4"
 mypy = "0.991"
 pre-commit = "^2.21.0"
 
@@ -37,10 +36,6 @@ fix = true
 
 [tool.ruff.per-file-ignores]
 "__init__.py" = ["E402"]
-
-[tool.isort]
-line_length = 100
-profile = "black"
 
 [tool.black]
 line-length = 100
