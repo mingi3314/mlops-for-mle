@@ -10,10 +10,4 @@
             "source.organizeImports": true
         },
     },
-    "isort.args": [
-        "--profile",
-        "black",
-        "--line-length",
-        "100"
-    ],
 }
