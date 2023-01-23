@@ -37,10 +37,6 @@ fix = true
 [tool.ruff.per-file-ignores]
 "__init__.py" = ["E402"]
 
-[tool.ruff.isort]
-line_length = 100
-profile = "black"
-
 [tool.black]
 line-length = 100
 experimental-string-processing = true
