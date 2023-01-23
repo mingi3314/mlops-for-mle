@@ -1,7 +1,6 @@
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
-
 from src.model_development.base_train import load_data, preprocess
 
 
