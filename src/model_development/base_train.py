@@ -10,8 +10,8 @@ from sklearn.svm import SVC
 from src.database.engine import create_engine
 
 
-def load_data() -> pd.DataFrame:
-    enigne = create_engine()
+def load_data(host: str = None) -> pd.DataFrame:
+    enigne = create_engine(host)
     df = pd.read_sql("SELECT * from iris_data ORDER BY id DESC LIMIT 100;", enigne)
     return df
 
