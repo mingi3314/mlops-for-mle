@@ -7,6 +7,7 @@ from mlflow.models.signature import infer_signature
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
+
 from src.model_development.base_train import load_data, preprocess
 
 os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
@@ -31,6 +32,8 @@ def main(model_name: str) -> None:
 
     signature = infer_signature(X_train, pipeline.predict(X_train))
     input_example = X_train.iloc[:5, :]
+
+    mlflow.set_experiment("new-experiment")
 
     with mlflow.start_run():
         mlflow.log_metric("train_accuracy", pipeline.score(X_train, y_train))
