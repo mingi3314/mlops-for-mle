@@ -43,3 +43,10 @@ ENV PATH="$PATH:$HOME/minio-binaries/"
 COPY --from=package_installer /usr/local/bin /usr/local/bin
 COPY --from=package_installer /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY . .
+
+FROM base as fastapi_server
+COPY --from=package_installer /usr/local/bin /usr/local/bin
+COPY --from=package_installer /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY . .
+ENTRYPOINT ["uvicorn"]
+CMD ["--app-dir", "src/fastapi_tutorial", "--host", "0.0.0.0", "crud_pydantic:app", "--reload"]
