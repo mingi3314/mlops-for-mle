@@ -111,6 +111,15 @@ services:
         --default-artifact-root s3://mlflow/ \
         --host 0.0.0.0
 
+  fastapi-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: fastapi_server
+    container_name: fastapi-server
+    ports:
+      - "8000:8000"
+
 networks:
   default:
     name: mlops-network
