@@ -6,7 +6,6 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
-
 from src.database.engine import create_engine
 
 
@@ -17,7 +16,7 @@ def load_data(host: str = None) -> pd.DataFrame:
 
 
 def preprocess(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
-    X = df.drop("target", axis=1)
+    X = df.drop(["id", "target"], axis=1)
     y = df["target"]
 
     # Split the data into train and test
