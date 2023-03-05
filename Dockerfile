@@ -44,9 +44,17 @@ COPY --from=package_installer /usr/local/bin /usr/local/bin
 COPY --from=package_installer /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY . .
 
-FROM base as fastapi_server
+FROM base as fastapi_tutorial
 COPY --from=package_installer /usr/local/bin /usr/local/bin
 COPY --from=package_installer /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY . .
 ENTRYPOINT ["uvicorn"]
 CMD ["--app-dir", "src/fastapi_tutorial", "--host", "0.0.0.0", "crud_pydantic:app", "--reload"]
+
+FROM base as fastapi_server
+COPY --from=package_installer /usr/local/bin /usr/local/bin
+COPY --from=package_installer /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
+COPY . .
+ENTRYPOINT ["uvicorn"]
+CMD ["--app-dir", "src/api_serving", "--host", "0.0.0.0", "app:app", "--reload"]
+
