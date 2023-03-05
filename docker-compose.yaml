@@ -111,6 +111,15 @@ services:
         --default-artifact-root s3://mlflow/ \
         --host 0.0.0.0
 
+  fastapi-tutorial:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: fastapi_tutorial
+    container_name: fastapi-tutorial
+    ports:
+      - "8000:8000"
+
   fastapi-server:
     build:
       context: .
@@ -119,6 +128,18 @@ services:
     container_name: fastapi-server
     ports:
       - "8000:8000"
+    healthcheck:
+      test:
+        [
+          "curl -X 'POST'",
+          "http://localhost:8000/predict",
+          "-H 'accept: application/json",
+          "-H 'Content-Type: application/json'",
+          "-d '{\"sepal_length\": 5.1, \"sepal_width\": 3.5, \"petal_length\": 1.4, \"petal_width\": 0.2}'"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
 networks:
   default:
